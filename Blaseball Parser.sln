@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Blaseball Parser", "Blaseball Parser.pyproj", "{574B8FB5-27A7-4B18-AD0E-9D4B75D57737}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{574B8FB5-27A7-4B18-AD0E-9D4B75D57737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{574B8FB5-27A7-4B18-AD0E-9D4B75D57737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BBE3FF75-CA50-41BB-B6F3-220F1A245079}
+	EndGlobalSection
+EndGlobal
