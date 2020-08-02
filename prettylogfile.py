@@ -1,27 +1,43 @@
 import json
 with open('config.json') as json_file:
-    config = json.load(json_file)
+   config = json.load(json_file)
 
-#filepath = config["file_path"] + input("Path to file in logs folder: ")
-filepath = 'Logs/Season 2 - Post/blaseball-log-postseason-2.json'
+base_filepath = config["file_path"]
+#filepath = 'Logs/Season 2 - Post/blaseball-log-postseason-2.json'
 
-with open(filepath, "r") as unpretty_log:
-    updatecount = 0
-    newlog = open(filepath+"temp", "w")
-    newlog.write("{ \n")
+def set_path():
+    path_append = input("Which log file needs processing?")
+    filepath = base_filepath + path_append
+    return filepath
 
-    for line in unpretty_log:
-        if updatecount == 0:
-            newlog.write("\"update {}\" : \n".format(updatecount) + line[0:len(line)-1])
-        else:
-            newlog.write(",\n""\"update {}\" : \n".format(updatecount) + line[0:len(line)-1])
-        updatecount += 1
+def format_log_pbp():
+    log_path = set_path()
+    game_id = input("Game id: ")
+    subdic = {}
+
+    with open(log_path, "r") as file:
+        game_file = open(base_filepath + input("Save as: "), "w")
+        subdic = json.load(file)
+        print(type(subdic))
+        for update in subdic:
+            print(type(update))
+            dic = json.loads(update)
+            print(dic)
+            for game in dic["schedule"]:
+                if game["_id"] == game_id:
+                    game_file.writeline(game["lastUpdate"])
+        game_file.close()
+
+def format_log_all():
+    log_path = set_path()
+    big_dic = {}
+    with open(log_path, "r") as raw_log:
+        log_lines = raw_log.readlines()
+        update_num = 0
+        for line in log_lines:
+            line_j = json.loads(line)
+            big_dic[str(update_num)] = line_j
+            update_num += 1
     
-    newlog.write("\n}")
-    newlog.close()
-
-with open(filepath+"temp", "r") as unpretty_log:
-   unprettylog = json.load(unpretty_log)
-
-with open(filepath+"pretty", "w") as dest:
-   json.dump(unprettylog, dest, indent = 4)
+    with open(log_path+"done", "w") as dest:
+        json.dump(big_dic, dest, sort_keys=True, indent = 4)

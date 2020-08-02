@@ -20,6 +20,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="blaseballparser.py" />
+    <Compile Include="blaseball_lookups.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="prettylogfile.py" />
   </ItemGroup>
   <ItemGroup>
